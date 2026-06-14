@@ -1109,7 +1109,7 @@
       filter: blur(20px);
       opacity: 0.4;
     }
-    .footer-email {
+    .footer-email, .footer-website {
       font-size: clamp(1.2rem, 3vw, 2.5rem);
       color: var(--white);
       text-decoration: none;
@@ -1120,7 +1120,14 @@
       font-family: var(--font-sans);
       font-weight: 300;
     }
-    .footer-email:hover { border-color: var(--lavender-300); color: var(--lavender-300); }
+    .footer-email:hover, .footer-website:hover { border-color: var(--lavender-300); color: var(--lavender-300); }
+    .footer-contact-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      margin-top: 16px;
+    }
     .footer-bottom {
       position: relative;
       z-index: 2;
@@ -1188,6 +1195,129 @@
       z-index: 9990;
       opacity: 0.025;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+
+    /* ==============================
+       SECTION: PRICING
+    ============================== */
+    .pricing-section {
+      padding: 120px 48px;
+      max-width: 1400px;
+      margin: 0 auto;
+      background: var(--black);
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 80px;
+    }
+    @media (max-width: 1100px) {
+      .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 650px) {
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+    .pricing-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s ease, border-color 0.4s ease, background-color 0.4s ease;
+      min-height: 480px;
+    }
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(206,189,248,0.12) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .pricing-card:hover::before { opacity: 1; }
+    .pricing-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(206,189,248,0.45);
+      background: rgba(255,255,255,0.09);
+    }
+    .pricing-card-header {
+      position: relative;
+      z-index: 1;
+    }
+    .pricing-plan-name {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .pricing-plan-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--lavender-300);
+      margin-bottom: 24px;
+    }
+    .pricing-plan-price {
+      font-family: var(--font-serif);
+      font-size: 3.5rem;
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 32px;
+    }
+    .pricing-plan-price span {
+      font-size: 1.2rem;
+      font-family: var(--font-sans);
+      color: var(--white-dim);
+    }
+    .pricing-features-list {
+      list-style: none;
+      margin-bottom: 40px;
+      position: relative;
+      z-index: 1;
+    }
+    .pricing-feature-item {
+      font-size: 0.9rem;
+      color: var(--white-dim);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .pricing-feature-item::before {
+      content: '✦';
+      color: var(--lavender-300);
+      font-size: 0.75rem;
+    }
+    .pricing-btn {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 14px;
+      border-radius: 100px;
+      border: 1px solid var(--glass-border);
+      background: rgba(255,255,255,0.03);
+      color: var(--white);
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.3s, border-color 0.3s;
+      cursor: none;
+    }
+    .pricing-card:hover .pricing-btn {
+      background: var(--lavender-300);
+      border-color: var(--lavender-300);
+      color: var(--black);
     }
 
     /* ==============================
@@ -1521,6 +1651,76 @@
       </div>
     </section>
 
+    <!-- ===== PRICING ===== -->
+    <section class="pricing-section" id="pricing">
+      <div class="section-header">
+        <p class="section-label fade-up">04 — Flexible Plans</p>
+        <h2 class="section-title fade-up fade-up-delay-1">Transparent<br><em>pricing</em></h2>
+      </div>
+      <div class="pricing-grid">
+        <!-- Dot plan -->
+        <div class="pricing-card scale-in">
+          <div class="pricing-card-header">
+            <h3 class="pricing-plan-name">Dot Plan</h3>
+            <span class="pricing-plan-tag">Interactive Starter</span>
+            <div class="pricing-plan-price">$8</div>
+          </div>
+          <ul class="pricing-features-list">
+            <li class="pricing-feature-item">3D Interactive Website</li>
+            <li class="pricing-feature-item">Custom low-poly animations</li>
+            <li class="pricing-feature-item">Without domain & hosting</li>
+            <li class="pricing-feature-item">Standard layout structure</li>
+          </ul>
+          <a href="#footer" class="pricing-btn">Select Plan</a>
+        </div>
+        <!-- Era plan -->
+        <div class="pricing-card scale-in fade-up-delay-1">
+          <div class="pricing-card-header">
+            <h3 class="pricing-plan-name">Era Plan</h3>
+            <span class="pricing-plan-tag">Full Launch Bundle</span>
+            <div class="pricing-plan-price">$12</div>
+          </div>
+          <ul class="pricing-features-list">
+            <li class="pricing-feature-item">3D Interactive Website</li>
+            <li class="pricing-feature-item">With domain & hosting</li>
+            <li class="pricing-feature-item">SEO optimized setup</li>
+            <li class="pricing-feature-item">Mobile responsive design</li>
+          </ul>
+          <a href="#footer" class="pricing-btn">Select Plan</a>
+        </div>
+        <!-- Sona plan -->
+        <div class="pricing-card scale-in fade-up-delay-2">
+          <div class="pricing-card-header">
+            <h3 class="pricing-plan-name">Sona Plan</h3>
+            <span class="pricing-plan-tag">Dynamic App Suite</span>
+            <div class="pricing-plan-price">$30</div>
+          </div>
+          <ul class="pricing-features-list">
+            <li class="pricing-feature-item">3D Interactive Website with Backend</li>
+            <li class="pricing-feature-item">With domain & hosting</li>
+            <li class="pricing-feature-item">Custom database integration</li>
+            <li class="pricing-feature-item">CMS or Admin dashboard</li>
+          </ul>
+          <a href="#footer" class="pricing-btn">Select Plan</a>
+        </div>
+        <!-- Lock plan -->
+        <div class="pricing-card scale-in fade-up-delay-3">
+          <div class="pricing-card-header">
+            <h3 class="pricing-plan-name">Lock Plan</h3>
+            <span class="pricing-plan-tag">Custom Enterprise</span>
+            <div class="pricing-plan-price">Custom</div>
+          </div>
+          <ul class="pricing-features-list">
+            <li class="pricing-feature-item">Any Software Development</li>
+            <li class="pricing-feature-item">Price as per software</li>
+            <li class="pricing-feature-item">Scalable architecture</li>
+            <li class="pricing-feature-item">Dedicated support & updates</li>
+          </ul>
+          <a href="#footer" class="pricing-btn">Inquire Now</a>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== 3D SHOWCASE ===== -->
     <section class="showcase-section">
       <div class="showcase-bg"></div>
@@ -1693,9 +1893,10 @@
           Ready to elevate your digital presence? We'd love to hear about your project.
         </p>
         <div class="footer-logo-giant fade-up fade-up-delay-2" data-text="Gigni.">Gigni.</div>
-        <a href="mailto:hello@gigniconnect.space" class="footer-email fade-up fade-up-delay-3">
-          hello@gigniconnect.space
-        </a>
+        <div class="footer-contact-links fade-up fade-up-delay-3">
+          <a href="mailto:gigniconnect@gmail.com" class="footer-email">gigniconnect@gmail.com</a>
+          <a href="https://gigniconnect.space" target="_blank" rel="noopener" class="footer-website">gigniconnect.space</a>
+        </div>
       </div>
       <div class="footer-bottom">
         <p class="footer-copy">© 2025 <span>Gigni Developers</span>. All rights reserved. Website Design by Gigni Developers.</p>
