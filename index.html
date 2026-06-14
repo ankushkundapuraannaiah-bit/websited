@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, viewport-fit=cover" />
-  <title>Gigni Developers | The Power of Digital Design</title>
+  <title>Gigni Developers | The Power of Digital Storytelling</title>
   <meta name="description" content="Gigni Developers — An immersive 3D experience exploring the art of premium website design. We craft stunning digital experiences that captivate and convert." />
-  <meta property="og:title" content="Gigni Developers | The Power of Digital Design" />
+  <meta property="og:title" content="Gigni Developers | The Power of Digital Storytelling" />
   <meta property="og:description" content="An immersive 3D digital experience showcasing premium website design by Gigni Developers." />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -241,6 +241,18 @@
     }
 
     /* ==============================
+       SCROLL CANVAS (FIXED)
+    ============================== */
+    #hero-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* ==============================
        HERO SECTION
     ============================== */
     #hero {
@@ -252,12 +264,6 @@
       justify-content: flex-end;
       overflow: hidden;
       background: var(--black);
-    }
-    #hero-canvas {
-      position: absolute;
-      inset: 0;
-      width: 100%; height: 100%;
-      z-index: 1;
     }
     .hero-bg {
       position: absolute;
@@ -350,7 +356,7 @@
     /* ==============================
        SCROLL WRAPPER
     ============================== */
-    #scroll-wrapper { position: relative; z-index: 10; background: var(--black); }
+    #scroll-wrapper { position: relative; z-index: 10; pointer-events: auto; }
 
     /* ==============================
        SECTION: MANIFESTO
@@ -363,21 +369,13 @@
       padding: 120px 48px;
       position: relative;
       overflow: hidden;
-    }
-    .manifesto-section::before {
-      content: '';
-      position: absolute;
-      top: -200px; left: 50%;
-      transform: translateX(-50%);
-      width: 800px; height: 800px;
-      background: radial-gradient(circle, rgba(206,189,248,0.06) 0%, transparent 70%);
-      pointer-events: none;
+      background: transparent;
     }
     .manifesto-inner {
       max-width: 900px;
       text-align: center;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
     .manifesto-number {
       font-size: 0.75rem;
@@ -436,6 +434,7 @@
       min-height: 100vh;
       display: flex;
       align-items: stretch;
+      background: transparent;
     }
     .story-sticky {
       position: sticky;
@@ -459,7 +458,7 @@
       height: 75%;
       object-fit: contain;
       border-radius: 24px;
-      filter: drop-shadow(0 0 60px rgba(206,189,248,0.3));
+      filter: drop-shadow(0 0 60px rgba(206,189,248,0.35));
       transform: perspective(800px) rotateY(-8deg) rotateX(4deg);
       transition: transform 0.6s ease;
     }
@@ -477,11 +476,11 @@
       padding: 120px 64px 120px 80px;
       display: flex;
       flex-direction: column;
-      gap: 80px;
+      gap: 160px;
     }
     .story-card {
-      opacity: 0.3;
-      transform: translateY(30px);
+      opacity: 0.2;
+      transform: translateY(40px);
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
     .story-card.active { opacity: 1; transform: translateY(0); }
@@ -541,6 +540,7 @@
       padding: 120px 48px;
       position: relative;
       overflow: hidden;
+      background: var(--black);
     }
     .stats-section::before {
       content: '';
@@ -604,6 +604,7 @@
       padding: 120px 48px;
       max-width: 1200px;
       margin: 0 auto;
+      background: var(--black);
     }
     .section-header {
       margin-bottom: 80px;
@@ -695,6 +696,7 @@
       border-top: 1px solid var(--glass-border);
       border-bottom: 1px solid var(--glass-border);
       position: relative;
+      background: var(--black);
     }
     .marquee-track {
       display: flex;
@@ -738,6 +740,7 @@
       padding: 120px 48px;
       max-width: 1400px;
       margin: 0 auto;
+      background: var(--black);
     }
     .work-grid {
       display: grid;
@@ -847,6 +850,7 @@
       justify-content: center;
       overflow: hidden;
       padding: 120px 48px;
+      background: transparent;
     }
     .showcase-bg {
       position: absolute;
@@ -862,7 +866,7 @@
       width: 100%;
       align-items: center;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
     @media (max-width: 768px) {
       .showcase-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -916,6 +920,7 @@
       transition: transform 0.3s ease;
     }
     .showcase-cta:hover .cta-arrow { transform: rotate(45deg); }
+    
     .showcase-visual {
       position: relative;
       display: flex;
@@ -936,18 +941,13 @@
       height: 90%;
       object-fit: contain;
       border-radius: 24px;
-      filter: drop-shadow(0 0 80px rgba(206,189,248,0.4)) drop-shadow(0 0 120px rgba(106,171,255,0.2));
-      animation: orbFloat 6s ease-in-out infinite, orbSpin 20s linear infinite;
+      filter: drop-shadow(0 0 80px rgba(206,189,248,0.4)) drop-shadow(0 0 120px rgba(106,171,255,0.25));
+      animation: orbFloat 6s ease-in-out infinite;
       transform-origin: center;
     }
     @keyframes orbFloat {
-      0%, 100% { transform: translateY(0) rotateX(4deg) rotateY(-6deg); }
-      50% { transform: translateY(-24px) rotateX(-2deg) rotateY(4deg); }
-    }
-    @keyframes orbSpin {
-      from { filter: drop-shadow(0 0 80px rgba(206,189,248,0.4)) drop-shadow(0 0 120px rgba(106,171,255,0.2)); }
-      50% { filter: drop-shadow(0 0 100px rgba(206,189,248,0.6)) drop-shadow(0 0 60px rgba(251,215,245,0.3)); }
-      to { filter: drop-shadow(0 0 80px rgba(206,189,248,0.4)) drop-shadow(0 0 120px rgba(106,171,255,0.2)); }
+      0%, 100% { transform: translateY(0) rotateX(2deg) rotateY(-4deg); }
+      50% { transform: translateY(-20px) rotateX(-2deg) rotateY(4deg); }
     }
     .orb-ring {
       position: absolute;
@@ -969,6 +969,7 @@
     .testimonials-section {
       padding: 120px 48px;
       overflow: hidden;
+      background: var(--black);
     }
     .testimonials-track-wrap {
       margin-top: 60px;
@@ -1047,6 +1048,7 @@
       justify-content: space-between;
       padding: 80px 48px 48px;
       overflow: hidden;
+      background: transparent;
     }
     .footer-bg-glow {
       position: absolute;
@@ -1058,7 +1060,7 @@
     }
     .footer-content {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -1121,7 +1123,7 @@
     .footer-email:hover { border-color: var(--lavender-300); color: var(--lavender-300); }
     .footer-bottom {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -1233,16 +1235,18 @@
     </div>
   </nav>
 
+  <!-- ===== 3D CANVAS FOR SCROLLYTELLING ===== -->
+  <canvas id="hero-canvas"></canvas>
+
   <!-- ===== HERO SECTION ===== -->
   <section id="hero">
     <div class="hero-bg"></div>
-    <canvas id="hero-canvas"></canvas>
     <div class="hero-content" id="hero-content">
       <p class="hero-sub-label">Est. 2024 · Website Design Studio</p>
       <h2 class="hero-eyebrow">
         The power <em>of</em><br>digital
       </h2>
-      <h1 class="hero-title" id="hero-title">design</h1>
+      <h1 class="hero-title" id="hero-title">stories</h1>
     </div>
     <div class="hero-scroll-hint" id="scroll-hint">
       <p>Scroll to explore</p>
@@ -1437,7 +1441,7 @@
           <div class="work-card-bg" style="background-image: url('hologram.png');"></div>
           <div class="work-card-inner">
             <div>
-              <p class="work-card-label">2024 · E-Commerce</p>
+              <p class="work-card-label">2025 · E-Commerce</p>
               <h3 class="work-card-title">Aura Luxury<br>Shopping Experience</h3>
             </div>
             <div class="work-card-footer">
@@ -1458,7 +1462,7 @@
           <div class="work-card-bg" style="background-image: url('bg.png'); opacity: 0.35;"></div>
           <div class="work-card-inner">
             <div>
-              <p class="work-card-label">2024 · SaaS</p>
+              <p class="work-card-label">2025 · SaaS</p>
               <h3 class="work-card-title">Nexus Platform<br>Dashboard</h3>
             </div>
             <div class="work-card-footer">
@@ -1477,7 +1481,7 @@
         <div class="work-card work-card-3 scale-in fade-up-delay-2">
           <div class="work-card-inner" style="background: linear-gradient(135deg, rgba(206,189,248,0.08), rgba(106,171,255,0.05));">
             <div>
-              <p class="work-card-label">2024 · Agency</p>
+              <p class="work-card-label">2025 · Agency</p>
               <h3 class="work-card-title">Prism Creative<br>Studio</h3>
             </div>
             <div class="work-card-footer">
@@ -1494,11 +1498,11 @@
           </div>
         </div>
         <div class="work-card work-card-4 scale-in fade-up-delay-3">
-          <div class="work-card-bg" style="background-image: url('hero_orb.png');"></div>
+          <div class="work-card-bg" style="background-image: url('hummingbird.png');"></div>
           <div class="work-card-inner">
             <div>
-              <p class="work-card-label">2025 · Tech Startup</p>
-              <h3 class="work-card-title">Orbital AI — Immersive<br>Product Landing Page</h3>
+              <p class="work-card-label">2026 · Tech Startup</p>
+              <h3 class="work-card-title">Geometric Hummingbird — Immersive<br>Product Landing Page</h3>
             </div>
             <div class="work-card-footer">
               <div class="work-card-tags">
@@ -1522,14 +1526,14 @@
       <div class="showcase-bg"></div>
       <div class="showcase-grid">
         <div class="showcase-text">
-          <p class="section-label fade-left">04 — 3D Capability</p>
+          <p class="section-label fade-left">04 — 3D Scrollytelling</p>
           <h2 class="showcase-heading fade-left fade-up-delay-1">
             We bring your<br>brand to <span>life</span><br>in three dimensions
           </h2>
           <p class="showcase-body fade-left fade-up-delay-2">
-            Leveraging cutting-edge WebGL and Three.js, we create interactive 3D experiences
-            directly in the browser — no plugins, no downloads. Just pure, immersive magic
-            powered by modern web technology.
+            Inspired by the interactive storytelling of Noomo Agency and the geometric artistry of Meshy AI,
+            we weave dynamic 3D elements directly into your web layout. As you scroll, the hummingbird
+            travels, rotates, and adapts, creating a continuous narrative experience.
           </p>
           <a href="#footer" class="showcase-cta fade-left fade-up-delay-3">
             Start your project
@@ -1546,8 +1550,8 @@
             <div class="orb-ring orb-ring-2"></div>
             <div class="orb-ring orb-ring-3"></div>
             <img
-              src="hero_orb.png"
-              alt="3D Crystal Orb — Gigni Developers"
+              src="hummingbird.png"
+              alt="3D Geometric Hummingbird — Gigni Developers"
               class="showcase-orb-img"
               id="orb-img"
             />
@@ -1567,7 +1571,7 @@
           <!-- Duplicated for seamless loop -->
           <div class="testimonial-card">
             <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-            <p class="testimonial-quote">"Gigni completely transformed our digital presence. The 3D hero section alone increased our conversions by 40%. Absolutely breathtaking work."</p>
+            <p class="testimonial-quote">"Gigni completely transformed our digital presence. The 3D scrollytelling path alone increased our conversions by 40%. Absolutely breathtaking work."</p>
             <div class="testimonial-author">
               <div class="testimonial-avatar">A</div>
               <div>
@@ -1623,7 +1627,7 @@
           <!-- Duplicate set -->
           <div class="testimonial-card">
             <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-            <p class="testimonial-quote">"Gigni completely transformed our digital presence. The 3D hero section alone increased our conversions by 40%. Absolutely breathtaking work."</p>
+            <p class="testimonial-quote">"Gigni completely transformed our digital presence. The 3D scrollytelling path alone increased our conversions by 40%. Absolutely breathtaking work."</p>
             <div class="testimonial-author">
               <div class="testimonial-avatar">A</div>
               <div>
@@ -1808,7 +1812,7 @@
   }, { passive: true });
 
   /* ==============================
-     THREE.JS HERO CANVAS
+     THREE.JS HERO CANVAS (SCROLLYTELLING HUMMINGBIRD)
   ============================== */
   function initThreeHero() {
     const canvas = document.getElementById('hero-canvas');
@@ -1820,10 +1824,9 @@
     const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
     camera.position.set(0, 0, 5);
 
-    // Ambient light
-    scene.add(new THREE.AmbientLight(0xffffff, 0.3));
+    // Light rig
+    scene.add(new THREE.AmbientLight(0xffffff, 0.35));
 
-    // Point lights for drama
     const light1 = new THREE.PointLight(0xcebdf8, 8, 20);
     light1.position.set(3, 4, 3);
     scene.add(light1);
@@ -1836,66 +1839,98 @@
     light3.position.set(0, -4, 5);
     scene.add(light3);
 
-    // Main crystal icosahedron
-    const geom = new THREE.IcosahedronGeometry(1.6, 3);
-    const mat = new THREE.MeshPhysicalMaterial({
+    // ==========================================
+    // PROCEDURAL GEOMETRIC HUMMINGBIRD (Meshy style)
+    // ==========================================
+    const birdGroup = new THREE.Group();
+    scene.add(birdGroup);
+
+    // Materials
+    const bodyMat = new THREE.MeshPhysicalMaterial({
       color: 0xcebdf8,
-      metalness: 0.1,
+      metalness: 0.15,
       roughness: 0.05,
-      transmission: 0.95,
+      transmission: 0.6,
       transparent: true,
-      opacity: 0.88,
-      ior: 1.8,
-      thickness: 2,
-      reflectivity: 1,
-      iridescence: 1,
-      iridescenceIOR: 2.0,
-      side: THREE.DoubleSide,
+      opacity: 0.9,
+      ior: 1.6,
+      reflectivity: 0.8,
+      iridescence: 1.0,
+      iridescenceIOR: 1.8,
+      side: THREE.DoubleSide
     });
-    const mesh = new THREE.Mesh(geom, mat);
-    mesh.position.set(2.5, 0.5, 0);
-    scene.add(mesh);
 
-    // Wireframe overlay
-    const wireMat = new THREE.MeshBasicMaterial({
-      color: 0xe2dbf8,
-      wireframe: true,
+    const wingMat = new THREE.MeshPhysicalMaterial({
+      color: 0x6aabff,
+      metalness: 0.3,
+      roughness: 0.08,
+      transmission: 0.9,
       transparent: true,
-      opacity: 0.08,
+      opacity: 0.75,
+      ior: 1.5,
+      iridescence: 1.0,
+      iridescenceIOR: 1.9,
+      side: THREE.DoubleSide
     });
-    const wireMesh = new THREE.Mesh(geom, wireMat);
-    wireMesh.position.copy(mesh.position);
-    scene.add(wireMesh);
 
-    // Outer shell
-    const shellGeom = new THREE.IcosahedronGeometry(1.85, 1);
-    const shellMat = new THREE.MeshBasicMaterial({
-      color: 0xcebdf8,
-      wireframe: true,
-      transparent: true,
-      opacity: 0.04,
+    const beakMat = new THREE.MeshPhysicalMaterial({
+      color: 0xfbd7f5,
+      metalness: 0.8,
+      roughness: 0.1,
+      iridescence: 0.5
     });
-    const shell = new THREE.Mesh(shellGeom, shellMat);
-    shell.position.copy(mesh.position);
-    scene.add(shell);
 
-    // Orbiting ring
-    const ringGeom = new THREE.TorusGeometry(2.4, 0.008, 8, 120);
-    const ringMat = new THREE.MeshBasicMaterial({ color: 0xcebdf8, transparent: true, opacity: 0.35 });
-    const ring = new THREE.Mesh(ringGeom, ringMat);
-    ring.rotation.x = Math.PI / 2.2;
-    ring.position.copy(mesh.position);
-    scene.add(ring);
+    // 1. Bird Body (stretched icosahedron)
+    const bodyGeom = new THREE.IcosahedronGeometry(0.8, 1);
+    bodyGeom.scale(0.55, 0.55, 1.4);
+    const bodyMesh = new THREE.Mesh(bodyGeom, bodyMat);
+    birdGroup.add(bodyMesh);
 
-    const ring2Geom = new THREE.TorusGeometry(2.8, 0.005, 6, 100);
-    const ring2 = new THREE.Mesh(ring2Geom, new THREE.MeshBasicMaterial({ color: 0x6aabff, transparent: true, opacity: 0.2 }));
-    ring2.rotation.x = Math.PI / 3;
-    ring2.rotation.z = Math.PI / 5;
-    ring2.position.copy(mesh.position);
-    scene.add(ring2);
+    // 2. Head (smaller icosahedron)
+    const headGeom = new THREE.IcosahedronGeometry(0.38, 1);
+    const headMesh = new THREE.Mesh(headGeom, bodyMat);
+    headMesh.position.set(0, 0.3, 0.9);
+    birdGroup.add(headMesh);
 
-    // Floating particles
-    const particleCount = 300;
+    // 3. Beak (long needle cone)
+    const beakGeom = new THREE.ConeGeometry(0.06, 0.9, 4);
+    beakGeom.rotateX(Math.PI / 2);
+    const beakMesh = new THREE.Mesh(beakGeom, beakMat);
+    beakMesh.position.set(0, 0.32, 1.6);
+    birdGroup.add(beakMesh);
+
+    // 4. Tail (low-poly feathers)
+    const tailGeom = new THREE.ConeGeometry(0.25, 0.9, 4);
+    tailGeom.scale(1.2, 0.05, 1.2);
+    tailGeom.rotateX(-Math.PI / 2.5);
+    const tailMesh = new THREE.Mesh(tailGeom, wingMat);
+    tailMesh.position.set(0, -0.2, -1.2);
+    birdGroup.add(tailMesh);
+
+    // 5. Left Wing
+    const leftWingGroup = new THREE.Group();
+    leftWingGroup.position.set(-0.35, 0.1, 0.1);
+    birdGroup.add(leftWingGroup);
+
+    const wingGeom = new THREE.ConeGeometry(0.4, 1.6, 3);
+    wingGeom.scale(1, 0.05, 1.5);
+    wingGeom.rotateZ(Math.PI / 2.2);
+    wingGeom.translate(-0.8, 0, 0); // Translate origin to pivot point
+    const leftWingMesh = new THREE.Mesh(wingGeom, wingMat);
+    leftWingGroup.add(leftWingMesh);
+
+    // 6. Right Wing
+    const rightWingGroup = new THREE.Group();
+    rightWingGroup.position.set(0.35, 0.1, 0.1);
+    birdGroup.add(rightWingGroup);
+
+    const rightWingGeom = wingGeom.clone();
+    rightWingGeom.scale(-1, 1, 1); // Flip horizontally
+    const rightWingMesh = new THREE.Mesh(rightWingGeom, wingMat);
+    rightWingGroup.add(rightWingMesh);
+
+    // Floating background particles
+    const particleCount = 200;
     const pPositions = new Float32Array(particleCount * 3);
     for (let i = 0; i < particleCount; i++) {
       pPositions[i * 3] = (Math.random() - 0.5) * 14;
@@ -1904,74 +1939,116 @@
     }
     const pGeom = new THREE.BufferGeometry();
     pGeom.setAttribute('position', new THREE.BufferAttribute(pPositions, 3));
-    const pMat = new THREE.PointsMaterial({ color: 0xffffff, size: 0.025, transparent: true, opacity: 0.5 });
+    const pMat = new THREE.PointsMaterial({ color: 0xffffff, size: 0.02, transparent: true, opacity: 0.4 });
     const particles = new THREE.Points(pGeom, pMat);
     scene.add(particles);
 
-    // Mouse parallax
+    // ==========================================
+    // MOUSE PARALLAX & SCROLLYTELLING SETUP
+    // ==========================================
     let targetMX = 0, targetMY = 0, currMX = 0, currMY = 0;
     document.addEventListener('mousemove', e => {
       targetMX = (e.clientX / window.innerWidth - 0.5) * 2;
       targetMY = (e.clientY / window.innerHeight - 0.5) * 2;
     });
 
-    // Scroll driven
     let scrollY = 0;
     window.addEventListener('scroll', () => { scrollY = window.scrollY; }, { passive: true });
 
-    // Animation loop
-    const clock = new THREE.Clock();
-    function animate() {
-      if (document.getElementById('hero').getBoundingClientRect().bottom < 0) {
-        requestAnimationFrame(animate);
-        return; // pause when hero not visible
+    // Path points for scrollytelling path
+    // PosX, PosY, PosZ, RotX, RotY, RotZ, Scale
+    const keyframes = [
+      { progress: 0.0, px: 2.2, py: 0.5, pz: 0.0, rx: 0.1, ry: -0.8, rz: 0.0, scale: 0.9 },   // Hero (right side)
+      { progress: 0.2, px: -2.0, py: -0.2, pz: -1.2, rx: 0.3, ry: 1.1, rz: -0.1, scale: 0.8 }, // Manifesto (left side)
+      { progress: 0.4, px: 1.8, py: 0.5, pz: -2.0, rx: -0.2, ry: -1.4, rz: 0.1, scale: 0.65 }, // Story 1
+      { progress: 0.6, px: -2.2, py: -0.4, pz: -1.0, rx: 0.2, ry: 0.9, rz: -0.2, scale: 0.75 }, // Story 2
+      { progress: 0.8, px: 1.8, py: 0.0, pz: 0.8, rx: 0.1, ry: -0.5, rz: 0.0, scale: 0.95 },  // Showcase
+      { progress: 1.0, px: 0.0, py: -3.5, pz: -3.0, rx: 0.5, ry: 0.0, rz: 0.0, scale: 0.4 }   // Footer (flies away)
+    ];
+
+    function getInterpolatedState(prog) {
+      prog = Math.max(0, Math.min(1, prog));
+      let start = keyframes[0];
+      let end = keyframes[keyframes.length - 1];
+
+      for (let i = 0; i < keyframes.length - 1; i++) {
+        if (prog >= keyframes[i].progress && prog <= keyframes[i+1].progress) {
+          start = keyframes[i];
+          end = keyframes[i+1];
+          break;
+        }
       }
+
+      const segmentProg = (prog - start.progress) / (end.progress - start.progress);
+      
+      // Interpolate values
+      return {
+        x: start.px + (end.px - start.px) * segmentProg,
+        y: start.py + (end.py - start.py) * segmentProg,
+        z: start.pz + (end.pz - start.pz) * segmentProg,
+        rx: start.rx + (end.rx - start.rx) * segmentProg,
+        ry: start.ry + (end.ry - start.ry) * segmentProg,
+        rz: start.rz + (end.rz - start.rz) * segmentProg,
+        scale: start.scale + (end.scale - start.scale) * segmentProg
+      };
+    }
+
+    const clock = new THREE.Clock();
+
+    function animate() {
       requestAnimationFrame(animate);
       const t = clock.getElapsedTime();
 
-      // Smooth mouse
+      // Wing flapping (rapid sine wave)
+      const flapAngle = Math.sin(t * 50) * 0.75;
+      leftWingGroup.rotation.z = flapAngle;
+      rightWingGroup.rotation.z = -flapAngle;
+
+      // Minor body adjustments during flapping (tilting wings/body slightly)
+      leftWingGroup.rotation.y = Math.cos(t * 50) * 0.15;
+      rightWingGroup.rotation.y = Math.cos(t * 50) * 0.15;
+
+      // Hovering micro-movements
+      const hoverY = Math.sin(t * 2.5) * 0.12;
+      const hoverZ = Math.cos(t * 1.8) * 0.08;
+
+      // Smooth mouse parallax
       currMX += (targetMX - currMX) * 0.05;
       currMY += (targetMY - currMY) * 0.05;
 
-      // Rotate crystal
-      mesh.rotation.x = t * 0.12 + currMY * 0.3;
-      mesh.rotation.y = t * 0.18 + currMX * 0.4;
-      mesh.rotation.z = t * 0.08;
-      wireMesh.rotation.copy(mesh.rotation);
-      shell.rotation.x = -t * 0.09;
-      shell.rotation.y = t * 0.14;
+      // Normalized scroll progress
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollProgress = maxScroll > 0 ? scrollY / maxScroll : 0;
 
-      // Float
-      mesh.position.y = 0.5 + Math.sin(t * 0.7) * 0.25 + currMY * 0.3;
-      mesh.position.x = 2.5 + currMX * 0.5;
-      wireMesh.position.copy(mesh.position);
-      shell.position.copy(mesh.position);
-      ring.position.copy(mesh.position);
-      ring2.position.copy(mesh.position);
+      // Get path position based on scroll
+      const state = getInterpolatedState(scrollProgress);
 
-      // Ring rotation
-      ring.rotation.y = t * 0.3;
-      ring2.rotation.z = t * 0.2;
+      // Apply coordinates (blend paths + hover + mouse parallax)
+      birdGroup.position.x = state.x + currMX * 0.4;
+      birdGroup.position.y = state.y + hoverY - currMY * 0.3;
+      birdGroup.position.z = state.z + hoverZ;
 
-      // Scroll effect — push crystal back
-      mesh.position.z = -scrollY * 0.003;
-      mesh.scale.setScalar(1 - scrollY * 0.0003);
+      // Apply rotation (blend path rotations + mouse tilt)
+      birdGroup.rotation.x = state.rx + currMY * 0.15;
+      birdGroup.rotation.y = state.ry + currMX * 0.2;
+      birdGroup.rotation.z = state.rz;
 
-      // Particles drift
-      particles.rotation.y = t * 0.02;
-      particles.rotation.x = t * 0.01;
+      // Apply scale
+      birdGroup.scale.setScalar(state.scale);
 
-      // Light animation
+      // Light orbit
       light1.position.x = Math.sin(t * 0.5) * 4;
       light1.position.z = Math.cos(t * 0.5) * 4;
       light2.position.x = -Math.sin(t * 0.4) * 4;
       light2.position.y = Math.cos(t * 0.6) * 3;
 
+      particles.rotation.y = t * 0.015;
+
       renderer.render(scene, camera);
     }
     animate();
 
-    // Resize
+    // Resize handling
     window.addEventListener('resize', () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
@@ -1980,14 +2057,13 @@
   }
 
   /* ==============================
-     SCROLL ANIMATIONS
+     SCROLL ANIMATIONS (INTERSECTION OBSERVER)
   ============================== */
   function initScrollAnimations() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('in-view');
-          // Staggered word reveals
           if (entry.target.classList.contains('manifesto-inner')) {
             entry.target.classList.add('revealed');
           }
@@ -2043,19 +2119,10 @@
     const heroTitle = document.getElementById('hero-title');
     window.addEventListener('scroll', () => {
       const sy = window.scrollY;
-      const vw = window.innerWidth;
-      // Parallax shift — large title drifts
       heroTitle.style.transform = `translateX(${sy * 0.4}px) translateY(${sy * 0.15}px)`;
       heroTitle.style.opacity = Math.max(0, 1 - sy / (window.innerHeight * 0.7));
     }, { passive: true });
   }
-
-  /* ==============================
-     HERO TITLE LETTER REVEAL
-  ============================== */
-  document.addEventListener('DOMContentLoaded', () => {
-    // Nothing needed here — handled by preloader onLoaded
-  });
   </script>
 </body>
 </html>
